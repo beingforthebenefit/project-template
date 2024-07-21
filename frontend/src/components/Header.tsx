@@ -10,7 +10,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { useTheme } from '@mui/material/styles'
+import {useTheme} from '@mui/material/styles'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
@@ -65,11 +65,11 @@ const Header: React.FC = () => {
             <MenuIcon />
           </IconButton>
         )}
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
+        <Typography variant="h6" style={{flexGrow: 1}}>
           My App
         </Typography>
         {isDesktop && (
-          <div style={{ display: 'flex' }}>
+          <div style={{display: 'flex'}}>
             <Button color="inherit">Home</Button>
             <Button color="inherit">About</Button>
             <Button color="inherit">Services</Button>
