@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
@@ -8,12 +9,17 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import {useTheme} from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
+import HomeIcon from '@mui/icons-material/Home'
+import InfoIcon from '@mui/icons-material/Info'
+import BuildIcon from '@mui/icons-material/Build'
+import ContactMailIcon from '@mui/icons-material/ContactMail'
 
 const Header: React.FC = () => {
   const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -33,19 +39,35 @@ const Header: React.FC = () => {
     setAnchorEl(null)
   }
 
+  const handleLinkClick = () => {
+    setMobileOpen(false)
+  }
+
   const drawer = (
     <div>
       <List>
-        <ListItem button>
+        <ListItem button component={Link} to="/" onClick={handleLinkClick}>
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/about" onClick={handleLinkClick}>
+          <ListItemIcon>
+            <InfoIcon />
+          </ListItemIcon>
           <ListItemText primary="About" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/services" onClick={handleLinkClick}>
+          <ListItemIcon>
+            <BuildIcon />
+          </ListItemIcon>
           <ListItemText primary="Services" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/contact" onClick={handleLinkClick}>
+          <ListItemIcon>
+            <ContactMailIcon />
+          </ListItemIcon>
           <ListItemText primary="Contact" />
         </ListItem>
       </List>
@@ -65,15 +87,23 @@ const Header: React.FC = () => {
             <MenuIcon />
           </IconButton>
         )}
-        <Typography variant="h6" style={{flexGrow: 1}}>
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
           My App
         </Typography>
         {isDesktop && (
-          <div style={{display: 'flex'}}>
-            <Button color="inherit">Home</Button>
-            <Button color="inherit">About</Button>
-            <Button color="inherit">Services</Button>
-            <Button color="inherit">Contact</Button>
+          <div style={{ display: 'flex' }}>
+            <Button color="inherit" component={Link} to="/">
+              Home
+            </Button>
+            <Button color="inherit" component={Link} to="/about">
+              About
+            </Button>
+            <Button color="inherit" component={Link} to="/services">
+              Services
+            </Button>
+            <Button color="inherit" component={Link} to="/contact">
+              Contact
+            </Button>
           </div>
         )}
         <div>
