@@ -9,11 +9,9 @@ import Dashboard from './components/Dashboard';
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <Dashboard />
-        <Footer />
-      </div>
+      <Header />
+      <Dashboard />
+      <Footer />
     </ApolloProvider>
   );
 }
