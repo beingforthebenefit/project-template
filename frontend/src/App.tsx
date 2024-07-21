@@ -1,17 +1,18 @@
 import React from 'react';
+import './App.css';
 import { ApolloProvider } from '@apollo/client';
 import client from './apolloClient';
-import Message from './components/Message';
-import { Button } from '@/components/ui/button';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="App">
-        <header className="App-header">
-          <Button variant="default">Hello, world!</Button>
-          <Message />
-        </header>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <Dashboard />
+        <Footer />
       </div>
     </ApolloProvider>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 
-const GET_MESSAGE = gql`
+export const GET_MESSAGE = gql`
   query GetMessage {
     message
   }
