@@ -1,7 +1,7 @@
 {
-  "name": "eventhub-backend",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "A Modern Event Management and Registration Platform",
+  "description": "A Modern Application",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --transpile-only src/index.ts",

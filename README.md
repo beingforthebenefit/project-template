@@ -1,6 +1,6 @@
-# EventHub
+# Project
 
-EventHub is a modern event management and registration platform.
+Project description.
 
 ## Table of Contents
 
@@ -69,8 +69,8 @@ EventHub is a modern event management and registration platform.
 Clone the repository:
 
 +++bash
-git clone https://github.com/yourusername/eventhub.git
-cd eventhub
+git clone https://github.com/beingforthebenefit/project-template.git
+cd project-template
 +++
 
 ## Running the Application

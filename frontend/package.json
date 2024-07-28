@@ -1,7 +1,7 @@
 {
-  "name": "eventhub-frontend",
+  "name": "frontend",
   "version": "0.1.0",
-  "description": "A Modern Event Management and Registration Platform",
+  "description": "A Modern Application",
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.10.8",
