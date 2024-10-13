@@ -17,7 +17,7 @@ Project description.
 
 ## Project Structure
 
-+++
+```
 .
 ├── backend
 │   ├── src
@@ -34,7 +34,7 @@ Project description.
 │   ├── Dockerfile
 ├── docker-compose.yml
 └── README.md
-+++
+```
 
 ## Technologies Used
 
@@ -68,10 +68,10 @@ Project description.
 
 Clone the repository:
 
-+++bash
+```bash
 git clone https://github.com/beingforthebenefit/project-template.git
 cd project-template
-+++
+```
 
 ## Running the Application
 
@@ -79,9 +79,9 @@ cd project-template
 
 Build and start the Docker containers:
 
-+++bash
+```bash
 docker-compose up --build
-+++
+```
 
 This command will build the Docker images and start the containers for the frontend, backend, and PostgreSQL database.
 
@@ -95,16 +95,16 @@ Access the application:
 To run tests for the frontend and backend, use the following commands:
 
 - **Frontend Tests:**
-  +++bash
+  ```bash
   cd frontend
   npm run test
-  +++
+  ```
 
 - **Backend Tests:**
-  +++bash
+  ```bash
   cd backend
   npm run test
-  +++
+  ```
 
 ## Ports
 
@@ -116,9 +116,9 @@ To run tests for the frontend and backend, use the following commands:
 
 Create a `.env` file in the root of the `backend` directory with the following content:
 
-+++env
+```env
 DATABASE_URL=postgresql://eventhub_user:password@db:5432/eventhub?schema=public
 SECRET=your_jwt_secret
-+++
+```
 
 Make sure to replace `your_jwt_secret` with a secure secret for JWT.
