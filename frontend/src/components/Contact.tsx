@@ -9,8 +9,8 @@ const Contact: React.FC = () => {
             <hgroup>
               <h2>Contact Us</h2>
               <p>
-                If you have any questions, feel free to reach out to us. We would
-                love to hear from you.
+                If you have any questions, feel free to reach out to us. We
+                would love to hear from you.
               </p>
             </hgroup>
           </header>

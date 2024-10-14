@@ -21,16 +21,16 @@ const EventList = () => {
               <p>{new Date(event.date).toLocaleDateString()}</p>
               <p>{event.location}</p>
             </article>
-          ))} 
+          ))}
           {error && (
             <article>
               <p>An error occurred. {error.toString()}</p>
-            </article>  
+            </article>
           )}
           {!(data?.events || error) && (
             <article>
               <p>No events found.</p>
-            </article>  
+            </article>
           )}
         </article>
       </section>

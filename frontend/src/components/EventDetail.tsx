@@ -23,8 +23,8 @@ const EventDetail: React.FC = () => {
           </header>
           <p>{event.description}</p>
           <p>{new Date(event.date).toLocaleDateString()}</p>
-          <p>{event.location}</p> 
-        </article>  
+          <p>{event.location}</p>
+        </article>
       </section>
     </main>
   )

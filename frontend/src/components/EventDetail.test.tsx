@@ -1,4 +1,3 @@
-import React from 'react'
 import {render, screen, waitFor} from '@testing-library/react'
 import {MockedProvider} from '@apollo/client/testing'
 import {MemoryRouter, Route, Routes} from 'react-router-dom'

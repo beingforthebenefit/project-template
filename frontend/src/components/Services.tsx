@@ -22,14 +22,16 @@ const Services: React.FC = () => {
                 </header>
                 <p>{service.description}</p>
                 <footer>
-                  <a href="#" className="secondary">Learn More</a>
+                  <a href="#" className="secondary">
+                    Learn More
+                  </a>
                 </footer>
               </article>
             ))}
           </div>
         </article>
-      </section>  
-    </main> 
+      </section>
+    </main>
   )
 }
 

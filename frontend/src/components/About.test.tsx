@@ -1,4 +1,3 @@
-import React from 'react'
 import {render, screen} from '@testing-library/react'
 import About from './About'
 import {MemoryRouter} from 'react-router-dom'

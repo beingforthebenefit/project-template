@@ -10,8 +10,8 @@ const About: React.FC = () => {
           </header>
           <p>
             We are a team of dedicated professionals committed to delivering
-            high-quality products and services. Our mission is to provide the best
-            solutions to our clients.
+            high-quality products and services. Our mission is to provide the
+            best solutions to our clients.
           </p>
         </article>
       </section>

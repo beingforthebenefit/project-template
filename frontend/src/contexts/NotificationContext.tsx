@@ -30,7 +30,7 @@ export const NotificationProvider: React.FC<{children: React.ReactNode}> = ({
   }
 
   return (
-    <NotificationContext.Provider value={{ showNotification }}>
+    <NotificationContext.Provider value={{showNotification}}>
       {children}
       {open && (
         <div

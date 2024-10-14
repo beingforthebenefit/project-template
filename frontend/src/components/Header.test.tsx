@@ -73,9 +73,9 @@ describe('Header component', () => {
     fireEvent.click(screen.getByLabelText(/open mobile menu/i))
 
     // Check if the drawer items are hidden
-    expect(screen.queryByText(/Home/i)).toBeNull();
-    expect(screen.queryByText(/About/i)).toBeNull();
-    expect(screen.queryByText(/Services/i)).toBeNull();
-    expect(screen.queryByText(/Contact/i)).toBeNull();
+    expect(screen.queryByText(/Home/i)).toBeNull()
+    expect(screen.queryByText(/About/i)).toBeNull()
+    expect(screen.queryByText(/Services/i)).toBeNull()
+    expect(screen.queryByText(/Contact/i)).toBeNull()
   })
 })
