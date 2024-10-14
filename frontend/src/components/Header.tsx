@@ -39,7 +39,7 @@ const Header: React.FC = () => {
         </ul>
         <ul>
           {isMobile && (
-            <li style={{ marginRight: '50px' }}>
+            <li>
               <button
                 aria-label="open mobile menu"
                 onClick={() => setMobileOpen(!mobileOpen)}
