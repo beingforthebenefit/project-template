@@ -51,7 +51,8 @@ test('renders EventList component loading state', () => {
     </MockedProvider>,
   )
 
-  expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  const loadingElement = document.querySelector('[aria-busy="true"]')
+  expect(loadingElement).toBeInTheDocument()
 })
 
 test('renders EventList component', async () => {
@@ -61,8 +62,8 @@ test('renders EventList component', async () => {
     </MockedProvider>,
   )
 
-  // Check if loading state is displayed
-  expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  const loadingElement = document.querySelector('[aria-busy="true"]')
+  expect(loadingElement).toBeInTheDocument()
 
   // Wait for the data to be loaded
   await waitFor(() => {
@@ -72,5 +73,8 @@ test('renders EventList component', async () => {
     expect(screen.getByText(/Event 2/i)).toBeInTheDocument()
     expect(screen.getByText(/Description 2/i)).toBeInTheDocument()
     expect(screen.getByText(/Location 2/i)).toBeInTheDocument()
+
+    const loadingElement = document.querySelector('[aria-busy="true"]')
+    expect(loadingElement).not.toBeInTheDocument()
   })
 })

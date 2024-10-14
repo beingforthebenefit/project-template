@@ -15,12 +15,18 @@ const EventDetail: React.FC = () => {
   const {event} = data
 
   return (
-    <div>
-      <h1>{event.title}</h1>
-      <p>{event.description}</p>
-      <p>{new Date(event.date).toLocaleDateString()}</p>
-      <p>{event.location}</p>
-    </div>
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <h2>{event.title}</h2>
+          </header>
+          <p>{event.description}</p>
+          <p>{new Date(event.date).toLocaleDateString()}</p>
+          <p>{event.location}</p> 
+        </article>  
+      </section>
+    </main>
   )
 }
 

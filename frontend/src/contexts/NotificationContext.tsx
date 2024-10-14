@@ -1,5 +1,4 @@
 import React, {createContext, useContext, useState} from 'react'
-import {Snackbar, Alert} from '@mui/material'
 
 interface NotificationContextProps {
   showNotification: (message: string, severity: 'success' | 'error') => void
@@ -20,6 +19,10 @@ export const NotificationProvider: React.FC<{children: React.ReactNode}> = ({
     setMessage(message)
     setSeverity(severity)
     setOpen(true)
+
+    setTimeout(() => {
+      setOpen(false)
+    }, 6000)
   }
 
   const handleClose = () => {
@@ -27,13 +30,40 @@ export const NotificationProvider: React.FC<{children: React.ReactNode}> = ({
   }
 
   return (
-    <NotificationContext.Provider value={{showNotification}}>
+    <NotificationContext.Provider value={{ showNotification }}>
       {children}
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity={severity} sx={{width: '100%'}}>
-          {message}
-        </Alert>
-      </Snackbar>
+      {open && (
+        <div
+          role="alert"
+          className={`notification ${severity === 'success' ? 'success' : 'success'}`}
+          style={{
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            padding: '.5rem',
+            borderRadius: '5px',
+            backgroundColor: severity === 'success' ? 'green' : 'red',
+            color: 'white',
+            zIndex: 1000,
+          }}
+        >
+          <div>
+            {message}
+            <button
+              style={{
+                marginLeft: '1rem',
+                background: 'transparent',
+                border: 'none',
+                color: 'white',
+                cursor: 'pointer',
+              }}
+              onClick={handleClose}
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </NotificationContext.Provider>
   )
 }

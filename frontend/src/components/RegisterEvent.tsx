@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
-import {gql, useMutation} from '@apollo/client'
-import {Container, TextField, Button, Typography, Box} from '@mui/material'
+import {useMutation} from '@apollo/client'
 import {useNotification} from '../contexts/NotificationContext'
-import { REGISTER_EVENT } from '../queries/eventQueries'
+import {REGISTER_EVENT} from '../queries/eventQueries'
 
 const RegisterEvent: React.FC = () => {
   const [eventId, setEventId] = useState('')
@@ -20,33 +19,34 @@ const RegisterEvent: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{mt: 5}}>
-        <Typography variant="h4" gutterBottom>
-          Register for Event
-        </Typography>
-        <form onSubmit={handleRegister}>
-          <TextField
-            label="Event ID"
-            type="number"
-            fullWidth
-            margin="normal"
-            value={eventId}
-            onChange={(e) => setEventId(e.target.value)}
-            required
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{mt: 2}}
-          >
-            Register
-          </Button>
-        </form>
-      </Box>
-    </Container>
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <hgroup>
+              <h2>Register for Event</h2>
+              <p>Enter the event ID to register</p>
+            </hgroup>
+          </header>
+          <form onSubmit={handleRegister}>
+            <label htmlFor="eventId">Event ID</label>
+            <input
+              type="number"
+              id="eventId"
+              name="eventId"
+              placeholder="Enter the event ID"
+              value={eventId}
+              onChange={(e) => setEventId(e.target.value)}
+              required
+              autoFocus
+            />
+            <button type="submit" className="primary">
+              Register
+            </button>
+          </form>
+        </article>
+      </section>
+    </main>
   )
 }
 

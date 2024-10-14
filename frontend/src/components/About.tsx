@@ -1,22 +1,21 @@
 import React from 'react'
-import {Container, Typography, Box, Paper} from '@mui/material'
 
 const About: React.FC = () => {
   return (
-    <Container>
-      <Box py={5}>
-        <Paper elevation={3} style={{padding: '16px'}}>
-          <Typography variant="h4" gutterBottom>
-            About Us
-          </Typography>
-          <Typography variant="body1">
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <h2>About Us</h2>
+          </header>
+          <p>
             We are a team of dedicated professionals committed to delivering
-            high-quality products and services. Our mission is to provide the
-            best solutions to our clients.
-          </Typography>
-        </Paper>
-      </Box>
-    </Container>
+            high-quality products and services. Our mission is to provide the best
+            solutions to our clients.
+          </p>
+        </article>
+      </section>
+    </main>
   )
 }
 

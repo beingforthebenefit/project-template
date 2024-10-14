@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/client'
-import {Container, TextField, Button, Typography, Box} from '@mui/material'
 import {useNotification} from '../contexts/NotificationContext'
-import { LOGIN } from '../queries/userQueries'
+import {LOGIN} from '../queries/userQueries'
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('')
@@ -22,42 +21,48 @@ const Login: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{mt: 5}}>
-        <Typography variant="h4" gutterBottom>
-          Login
-        </Typography>
-        <form onSubmit={handleLogin}>
-          <TextField
-            label="Email"
-            type="email"
-            fullWidth
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{mt: 2}}
-          >
-            Login
-          </Button>
-        </form>
-      </Box>
-    </Container>
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <hgroup>
+              <h2>Login</h2>
+              <p>Enter your credentials to access your account</p>
+            </hgroup>
+          </header>
+          <form onSubmit={handleLogin}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete="email"
+              autoFocus
+            />
+
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoComplete="current-password"
+            />
+
+            <button type="submit" className="primary">
+              Login
+            </button>
+          </form>
+        </article>
+      </section>
+    </main>
   )
 }
 

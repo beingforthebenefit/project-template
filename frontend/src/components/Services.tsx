@@ -1,14 +1,4 @@
 import React from 'react'
-import {
-  Container,
-  Typography,
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  CardActions,
-  Button,
-} from '@mui/material'
 
 const Services: React.FC = () => {
   const services = [
@@ -18,34 +8,28 @@ const Services: React.FC = () => {
   ]
 
   return (
-    <Container>
-      <Box py={5}>
-        <Typography variant="h4" gutterBottom>
-          Our Services
-        </Typography>
-        <Grid container spacing={3}>
-          {services.map((service, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h5" component="div">
-                    {service.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {service.description}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-    </Container>
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <h2>Our Services</h2>
+          </header>
+          <div className="grid">
+            {services.map((service, index) => (
+              <article key={index}>
+                <header>
+                  <h3>{service.title}</h3>
+                </header>
+                <p>{service.description}</p>
+                <footer>
+                  <a href="#" className="secondary">Learn More</a>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </article>
+      </section>  
+    </main> 
   )
 }
 

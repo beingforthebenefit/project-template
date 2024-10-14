@@ -1,56 +1,27 @@
-import React from 'react'
-import {Link, useNavigate} from 'react-router-dom'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
-import Drawer from '@mui/material/Drawer'
-import List from '@mui/material/List'
-import ListItem from '@mui/material/ListItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import {useTheme} from '@mui/material/styles'
-import AccountCircle from '@mui/icons-material/AccountCircle'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
-import HomeIcon from '@mui/icons-material/Home'
-import EventIcon from '@mui/icons-material/Event'
-import InfoIcon from '@mui/icons-material/Info'
-import BuildIcon from '@mui/icons-material/Build'
-import ContactMailIcon from '@mui/icons-material/ContactMail'
+import React, {useEffect, useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import {jwtDecode} from 'jwt-decode'
 
 const Header: React.FC = () => {
-  const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
   let email = ''
   if (token) {
-    const decoded: {email: string} = jwtDecode(token)
+    const decoded: { email: string } = jwtDecode(token)
     email = decoded.email
-  }
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen)
-  }
-
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
-  const handleLinkClick = () => {
-    setMobileOpen(false)
   }
 
   const handleLogout = () => {
@@ -58,167 +29,77 @@ const Header: React.FC = () => {
     navigate('/login')
   }
 
-  const drawer = (
-    <div>
-      <List>
-        <ListItem button component={Link} to="/" onClick={handleLinkClick}>
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItem>
-        <ListItem
-          button
-          component={Link}
-          to="/events"
-          onClick={handleLinkClick}
-        >
-          <ListItemIcon>
-            <EventIcon />
-          </ListItemIcon>
-          <ListItemText primary="Events" />
-        </ListItem>
-        <ListItem button component={Link} to="/about" onClick={handleLinkClick}>
-          <ListItemIcon>
-            <InfoIcon />
-          </ListItemIcon>
-          <ListItemText primary="About" />
-        </ListItem>
-        <ListItem
-          button
-          component={Link}
-          to="/services"
-          onClick={handleLinkClick}
-        >
-          <ListItemIcon>
-            <BuildIcon />
-          </ListItemIcon>
-          <ListItemText primary="Services" />
-        </ListItem>
-        <ListItem
-          button
-          component={Link}
-          to="/contact"
-          onClick={handleLinkClick}
-        >
-          <ListItemIcon>
-            <ContactMailIcon />
-          </ListItemIcon>
-          <ListItemText primary="Contact" />
-        </ListItem>
-      </List>
-    </div>
-  )
-
   return (
-    <AppBar position="static">
-      <Toolbar>
-        {!isDesktop && (
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon />
-          </IconButton>
-        )}
-        <Typography variant="h6" style={{flexGrow: 1}}>
-          EventHub
-        </Typography>
-        {isDesktop && (
-          <div style={{display: 'flex'}}>
-            <Button color="inherit" component={Link} to="/">
-              Home
-            </Button>
-            <Button color="inherit" component={Link} to="/events">
-              Events
-            </Button>
-            <Button color="inherit" component={Link} to="/about">
-              About
-            </Button>
-            <Button color="inherit" component={Link} to="/services">
-              Services
-            </Button>
-            <Button color="inherit" component={Link} to="/contact">
-              Contact
-            </Button>
-          </div>
-        )}
-        <div>
-          <IconButton
-            edge="end"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            {token
-              ? [
-                  <MenuItem key="email" disabled>
-                    {email}
-                  </MenuItem>,
-                  <MenuItem key="profile" onClick={handleClose}>
-                    Profile
-                  </MenuItem>,
-                  <MenuItem key="account" onClick={handleClose}>
-                    My account
-                  </MenuItem>,
-                  <MenuItem key="logout" onClick={handleLogout}>
-                    Logout
-                  </MenuItem>,
-                ]
-              : [
-                  <MenuItem
-                    key="login"
-                    component={Link}
-                    to="/login"
-                    onClick={handleClose}
-                  >
-                    Login
-                  </MenuItem>,
-                  <MenuItem
-                    key="register"
-                    component={Link}
-                    to="/register"
-                    onClick={handleClose}
-                  >
-                    Register
-                  </MenuItem>,
-                ]}
-          </Menu>
-        </div>
-      </Toolbar>
-      <Drawer
-        variant="temporary"
-        anchor="left"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-      >
-        {drawer}
-      </Drawer>
-    </AppBar>
+    <header className="container">
+      <nav>
+        <ul>
+          <li>
+            <strong>EventHub</strong>
+          </li>
+        </ul>
+        <ul>
+          {isMobile && (
+            <li style={{ marginRight: '50px' }}>
+              <button
+                aria-label="open mobile menu"
+                onClick={() => setMobileOpen(!mobileOpen)}
+              >
+                ☰
+              </button>
+            </li>
+          )}
+          {!isMobile && (
+            <>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/events">Events</Link></li>
+              <li><Link to="/about">About</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+            </>
+          )}
+
+          {/* Account/Profile Menu */}
+          <li>
+            <details className="dropdown"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+            >
+              <summary>{token ? email : 'Account'}</summary>
+              <ul>
+                {token ? (
+                  <>
+                    <li><Link to="/profile">Profile</Link></li>
+                    <li><Link to="/account">My account</Link></li>
+                    <li><button onClick={handleLogout}>Logout</button></li>
+                  </>
+                ) : (
+                  <>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/register">Register</Link></li>
+                  </>
+                )}
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Mobile Navigation */}
+      {mobileOpen && (
+        <aside>
+          <nav>
+            <ul>
+              <li><Link to="/" onClick={() => setMobileOpen(false)}>Home</Link></li>
+              <li><Link to="/events" onClick={() => setMobileOpen(false)}>Events</Link></li>
+              <li><Link to="/about" onClick={() => setMobileOpen(false)}>About</Link></li>
+              <li><Link to="/services" onClick={() => setMobileOpen(false)}>Services</Link></li>
+              <li><Link to="/contact" onClick={() => setMobileOpen(false)}>Contact</Link></li>
+            </ul>
+          </nav>
+        </aside>
+      )}
+    </header>
   )
 }
 

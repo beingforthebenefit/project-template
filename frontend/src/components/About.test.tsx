@@ -1,18 +1,12 @@
 import React from 'react'
 import {render, screen} from '@testing-library/react'
 import About from './About'
-import {ThemeProvider, createTheme} from '@mui/material/styles'
 import {MemoryRouter} from 'react-router-dom'
-
-// Create a theme for the test
-const theme = createTheme()
 
 test('renders About component', async () => {
   render(
     <MemoryRouter>
-      <ThemeProvider theme={theme}>
-        <About />
-      </ThemeProvider>
+      <About />
     </MemoryRouter>,
   )
 

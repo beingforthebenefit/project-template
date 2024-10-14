@@ -10,10 +10,10 @@ export const GET_MESSAGE = gql`
 const Message: React.FC = () => {
   const {loading, error, data} = useQuery(GET_MESSAGE)
 
-  if (loading) return <span>Loading...</span>
-  if (error) return <span>Error: {error.message}</span>
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error.message}</p>
 
-  return <span>{data.message}</span>
+  return <p>{data.message}</p>
 }
 
 export default Message

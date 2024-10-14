@@ -1,18 +1,6 @@
-import React, {ReactNode} from 'react'
+import React from 'react'
 import {render, screen, fireEvent, waitFor} from '@testing-library/react'
 import {NotificationProvider, useNotification} from './NotificationContext'
-
-// Mocking Snackbar and Alert from Material-UI
-jest.mock('@mui/material', () => {
-  const originalModule = jest.requireActual('@mui/material')
-  return {
-    __esModule: true,
-    ...originalModule,
-    Snackbar: ({open, children}: {open: boolean; children: ReactNode}) =>
-      open ? <div>{children}</div> : null,
-    Alert: ({children}: {children: ReactNode}) => <div>{children}</div>,
-  }
-})
 
 const TestComponent: React.FC = () => {
   const {showNotification} = useNotification()

@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {useMutation} from '@apollo/client'
-import {Container, TextField, Button, Typography, Box} from '@mui/material'
 import {REGISTER} from '../queries/userQueries'
 import {useNotification} from '../contexts/NotificationContext'
 
@@ -21,42 +20,48 @@ const Register: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="sm">
-      <Box sx={{mt: 5}}>
-        <Typography variant="h4" gutterBottom>
-          Register
-        </Typography>
-        <form onSubmit={handleRegister}>
-          <TextField
-            label="Email"
-            type="email"
-            fullWidth
-            margin="normal"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{mt: 2}}
-          >
-            Register
-          </Button>
-        </form>
-      </Box>
-    </Container>
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <hgroup>
+              <h2>Register</h2>
+              <p>Fill in the form below to create your account</p>
+            </hgroup>
+          </header>
+          <form onSubmit={handleRegister}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete="email"
+              autoFocus
+            />
+
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              autoComplete="new-password"
+            />
+
+            <button type="submit" className="primary">
+              Register
+            </button>
+          </form>
+        </article>
+      </section>
+    </main>
   )
 }
 

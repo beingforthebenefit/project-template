@@ -1,64 +1,40 @@
-import React from 'react'
 import {useQuery} from '@apollo/client'
 import {GET_EVENTS} from '../queries/eventQueries'
-import {
-  CircularProgress,
-  Container,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-} from '@mui/material'
 
 const EventList = () => {
   const {loading, error, data} = useQuery(GET_EVENTS)
 
-  if (loading) return <CircularProgress />
-  if (error)
-    return <Typography color="error">Error: {error.message}</Typography>
-
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        Event List
-      </Typography>
-      <List>
-        {data.events.map((event: any) => (
-          <ListItem key={event.id} divider>
-            <ListItemText
-              primary={event.title}
-              secondary={
-                <>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    color="textPrimary"
-                  >
-                    {event.description}
-                  </Typography>
-                  <br />
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    {new Date(event.date).toLocaleDateString()}
-                  </Typography>
-                  <br />
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    color="textSecondary"
-                  >
-                    {event.location}
-                  </Typography>
-                </>
-              }
-            />
-          </ListItem>
-        ))}
-      </List>
-    </Container>
+    <main className="container">
+      <section>
+        <article>
+          <header>
+            <h2>Event List</h2>
+          </header>
+          {loading && <article aria-busy="true"></article>}
+          {data?.events.map((event: any) => (
+            <article key={event.id}>
+              <header>
+                <h4>{event.title}</h4>
+              </header>
+              <p>{event.description}</p>
+              <p>{new Date(event.date).toLocaleDateString()}</p>
+              <p>{event.location}</p>
+            </article>
+          ))} 
+          {error && (
+            <article>
+              <p>An error occurred. {error.toString()}</p>
+            </article>  
+          )}
+          {!(data?.events || error) && (
+            <article>
+              <p>No events found.</p>
+            </article>  
+          )}
+        </article>
+      </section>
+    </main>
   )
 }
 
