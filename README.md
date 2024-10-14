@@ -1,6 +1,6 @@
 # Project
 
-Project description.
+This project serves as a comprehensive template for developing full-stack applications using a modern tech stack. It includes a frontend built with React, Pico CSS for styling, and Apollo Client for state management and GraphQL operations. The backend is powered by Node.js, Express for routing, Prisma as an ORM, Apollo Server for handling GraphQL requests, and PostgreSQL for data persistence. Testing is facilitated by Jest and React Testing Library. The entire application is containerized using Docker for ease of deployment. The project structure is well-organized into separate directories for frontend and backend, each with its own Dockerfile and package.json. This template provides a solid starting point for building scalable, testable, and deployable web applications.
 
 ## Table of Contents
 
@@ -40,7 +40,7 @@ Project description.
 
 - **Frontend:**
   - React
-  - Material-UI
+  - Pico CSS
   - Apollo Client
 
 - **Backend:**
