@@ -11,8 +11,10 @@ const Dashboard: React.FC = () => {
               <h2>Dashboard</h2>
             </header>
             <p>Welcome to the dashboard!</p>
-            <button className="primary">Get Started</button>
-            <button className="secondary">Learn More</button>
+            <div className="grid">
+              <button className="primary">Get Started</button>
+              <button className="secondary">Learn More</button>
+            </div>
           </article>
         </section>
         <section>
